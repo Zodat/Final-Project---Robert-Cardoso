@@ -7,16 +7,19 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Edge;
+using TechTalk.SpecFlow;
 
 namespace FinalProjectRobertCardoso.Utilities
 {
+    [Binding]
     internal class BaseTest
     {
-        protected IWebDriver driver;
-        protected string baseUrl = "https://www.edgewordstraining.co.uk";
+        public static IWebDriver driver;
+        public string baseUrl = "https://www.edgewordstraining.co.uk";
 
 
-        [SetUp]
+        [BeforeScenario]
+        //[SetUp]
         public void Setup()
         {
 
@@ -46,7 +49,9 @@ namespace FinalProjectRobertCardoso.Utilities
 
             driver.Manage().Window.Maximize();
         }
-        [TearDown]
+
+        [AfterScenario]
+        //[TearDown]
         public void TearDown()
         {
             Thread.Sleep(3000);///waits 3 seconds
